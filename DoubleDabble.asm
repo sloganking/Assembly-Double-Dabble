@@ -2,16 +2,33 @@
 
 	JMP main
 
-output:
+out1:
 	DB 0
+out2:
 	DB 0
-	DB 0
+out3:
+	DB 1
 	DB 255
 input:
-	DB 100
+	DB 100d
 
 shift:
-	SHL A, 20
+	MOV A, [out3]
+	SHL A, 1
+	MOV [out3], A
+
+	MOV A, [out2]
+	SHL A, 1
+	MOV [out2], A
+
+	;if, carry
+	JNC shift3
+
+shift3:
+	MOV A, [out1]
+	SHL A, 1
+	MOV [out1], A
+
 	RET
 
 dabble:
