@@ -3,13 +3,13 @@
 	JMP main
 
 ones:
-	DB 240
+	DB 0xf0
 tens:
-	DB 240
+	DB 0xf0
 hundreds:
-	DB 0
+	DB 0xf0
 input:
-	DB 240
+	DB 0xf0
 
 shift:
 	MOV A, [hundreds]	;shift nibble
@@ -48,9 +48,26 @@ shend:
 	RET
 
 dabble:
+	MOV B, ones
+.dabbleloop:
+	MOV A, [B]
+	SUB A, 0x40	;if(nibble > 4) add 3
+	JNA incb
+	MOV A, [B]
+	ADD A, 0x30
+	MOV [B], A
+incb:		
+	INC B
+	CMP B, 5
+	JNZ .dabbleloop
 	RET
 
 main:
+	MOV C, 0
+.mainloop:
 	CALL shift
 	CALL dabble
+	CMP C, 7
+	JNZ mainloop
+
 	HLT
