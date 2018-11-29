@@ -3,13 +3,13 @@
 	JMP main
 
 ones:
-	DB 0xf0
+	DB 0
 tens:
-	DB 0xf0
+	DB 0
 hundreds:
-	DB 0xf0
+	DB 0
 input:
-	DB 0xf0
+	DB 255
 
 shift:
 	MOV A, [hundreds]	;shift nibble
@@ -65,9 +65,10 @@ incb:
 main:
 	MOV C, 0
 .mainloop:
-	CALL shift
 	CALL dabble
-	CMP C, 7
-	JNZ mainloop
+	CALL shift
+	INC C
+	CMP C, 8
+	JNZ .mainloop
 
 	HLT
