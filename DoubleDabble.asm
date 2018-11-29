@@ -1,4 +1,5 @@
 ; Double Dabble Algorithm
+; takes int "input" and prints to console.
 
 	JMP main
 
@@ -9,7 +10,25 @@ tens:
 hundreds:
 	DB 0
 input:
-	DB 255
+	DB 123
+
+print:		; printing to console
+	MOV D, [4]	; hundreds place
+	SHR D, 4	; shift to ones place
+	ADD D, 48	; change to ascii
+	MOV [232], D
+
+	MOV D, [3]	; tens place
+	SHR D, 4	; shift to ones place
+	ADD D, 48	; change to ascii
+	MOV [233], D
+
+	MOV D, [2]	; ones place
+	SHR D, 4	; shift to ones place
+	ADD D, 48	; change to ascii
+	MOV [234], D
+	RET
+
 
 shift:
 	MOV A, [hundreds]	;shift nibble
@@ -62,13 +81,17 @@ incb:
 	JNZ .dabbleloop
 	RET
 
-main:
+doubledabble:
 	MOV C, 0
-.mainloop:
-	CALL dabble
+.doubledabbleloop:
+	CALL dabble	;Double dabble algorithm
 	CALL shift
 	INC C
 	CMP C, 8
-	JNZ .mainloop
+	JNZ .doubledabbleloop
+	RET
 
+main:
+	CALL doubledabble
+	CALL print
 	HLT
