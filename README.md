@@ -1,5 +1,5 @@
 # Assembly-Double-Dabble
-[Self teaching] Implementing the double dabble algorithm to be able to output numbers the the console.
+[Self teaching] Implementing the double dabble algorithm to be able to output numbers to the console.
 
 This project was created with the intent of teaching myself assembly and learning more about low level CPU operations. All code is to be executed using the simulator found here:
 
