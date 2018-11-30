@@ -9,9 +9,7 @@ https://schweigi.github.io/assembler-simulator/index.html
 
 ## Instructions
 
-paste project code from [DoubleDabble.asm](https://github.com/SleepingFox88/Assembly-Double-Dabble/blob/master/DoubleDabble.asm)
-
-into the [code section of the simulator](https://schweigi.github.io/assembler-simulator/index.html)
+paste project code from [DoubleDabble.asm](https://github.com/SleepingFox88/Assembly-Double-Dabble/blob/master/DoubleDabble.asm) into the [code section of the simulator](https://schweigi.github.io/assembler-simulator/index.html)
 
 Under label "input" [enter desired integer to be printed to the console.
 ](https://i.imgur.com/VTore8x.png)
