@@ -10,7 +10,7 @@ tens:
 hundreds:
 	DB 0
 input:
-	DB 123
+	DB 0
 
 print:		; printing to console
 	MOV D, [4]	; hundreds place
@@ -83,6 +83,9 @@ incb:
 
 doubledabble:
 	MOV C, 0
+	MOV [ones], 0
+	MOV [tens], 0
+	MOV [hundreds], 0
 .doubledabbleloop:
 	CALL dabble	;Double dabble algorithm
 	CALL shift
@@ -92,6 +95,7 @@ doubledabble:
 	RET
 
 main:
+	MOV [input], 1
 	CALL doubledabble
 	CALL print
 	HLT
